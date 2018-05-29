@@ -15,7 +15,7 @@ mongoose.connect(config.database);
 mongoose.connection.on('connected',()=>{
     console.log('connected a base de datos'+ config.database);
 });
-
+console.log("uri para conexcion "+process.env.MONGOURI);
 mongoose.connection.on('error',(err)=>{
     console.log('Error a base de datos'+ err);
 });
