@@ -4,8 +4,11 @@ const bodyParser =require('body-parser');
 const cors =require('cors');
 const passport =require('passport');
 const mongoose =require('mongoose');
-const config =require('./config/database');
+const config =require('./config/database');//archivo para conectar ala base de datos
+
+const app=express();//se usara express en esta aplicacione
 const port =5000;//puerto
+const users =require('./routes/users');//variable users cuando es llamada va a ese archivo
 //Conectado a base de datos
 mongoose.connect(config.database);
 //al conectarse
@@ -13,15 +16,11 @@ mongoose.connection.on('connected',()=>{
     console.log('connected a base de datos'+ config.database);
 });
 
-mongoose.connection.on('error',()=>{
-    console.log('Error a base de datos'+ config.database);
+mongoose.connection.on('error',(err)=>{
+    console.log('Error a base de datos'+ err);
 });
-mongoose.connection.on('error',()=>{
-    console.log("codigiyo")
-});
-const app=express();//se usara express en esta aplicacione
 
-const users =require('./routes/users')
+
 app.use(cors());//habilata cors
 //body parser midleware
 app.use(bodyParser.json());
@@ -33,6 +32,6 @@ app.get('/',(req,res)=>{
     res.send('ruta invalida');
 });
 app.listen(port,()=>{
-    console.log('el servidor empezo en '+3000);
+    console.log('el servidor empezo en '+ port);
     
 })
