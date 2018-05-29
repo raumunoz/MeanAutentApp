@@ -1,6 +1,6 @@
 
 
 module.exports={
-    database: 'mongodb://localhost:27017/meanaut',
+    database: process.env.MONGOURI,
     scret:'secretito'
 }

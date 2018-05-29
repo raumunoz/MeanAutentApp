@@ -13,7 +13,7 @@ const users =require('./routes/users');//variable users cuando es llamada va a e
 mongoose.connect(config.database);
 //al conectarse
 mongoose.connection.on('connected',()=>{
-    console.log('connected a base de datos'+ config.database);
+    console.log('conectado a '+ config.database);
 });
 console.log("uri para conexcion "+process.env.MONGOURI);
 mongoose.connection.on('error',(err)=>{
