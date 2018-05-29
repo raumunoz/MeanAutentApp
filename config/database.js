@@ -1,6 +1,6 @@
-
-
-module.exports={
+require('dotenv').config();
+module.exports = {
     database: process.env.MONGOURI,
-    scret:'secretito'
-}
+    secret: 'secreto'
+  }
+  

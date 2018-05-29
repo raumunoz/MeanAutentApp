@@ -1,19 +1,36 @@
-const exppres=require('express');
-const router =exppres.Router();//ruter
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
 
-//Register
-/*automaticamente pondra la direcion del usuario */
-router.get('/registro',(req,res,next)=>{
-    res.send('página de registro');
-});
-//autentificacion 
-router.post('/autenticate',(req,res,next)=>{
-    res.send('autentificación');
-});
-//para perfil
-router.get('/perfil',(req,res,next)=>{
-    res.send('perfil');
+// Register
+router.post('/registro', (req, res, next) => {
+  let newUser = new User({
+    nombre: req.body.nombre,
+    correo: req.body.correo,
+    nombreUsario: req.body.nombreUsario,
+    contrasena: req.body.contrasena
+  });
+
+  User.addUser(newUser, (err, user) => {
+    if(err){
+      console.log(err);
+      res.json({success: false, msg:'Failed to register user'});
+    } else {
+      res.json({success: true, msg:'User registered'});
+    }
+  });
 });
 
-/*se require exportar el router para que sea mostrado ene el servidor*/
-module.exports=router;
+// Authenticate
+router.post('/autenticacion', (req, res, next) => {
+  res.send('AUTHENTICATE');
+});
+
+// Profile
+router.get('/perfil', (req, res, next) => {
+  res.send('PROFILE');
+});
+
+module.exports = router;
