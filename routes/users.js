@@ -4,7 +4,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
-// Register
+// Register post que se hace desde el cliente 
+//para registrarse
 router.post('/registro', (req, res, next) => {
   let newUser = new User({
     nombre: req.body.nombre,
