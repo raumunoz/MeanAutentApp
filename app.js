@@ -25,7 +25,10 @@ mongoose.connection.on('error', (err) => {
 });
 
 
-
+//passport midleware
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport');
 // CORS Middleware
 app.use(cors());
 

@@ -9,11 +9,11 @@ const UserSchema = mongoose.Schema({
   },
   correo: {
     type: String,
-    required: true
+    required: false
   },
   nombreUsario: {
     type: String,
-    required: false
+    required: true
   },
   contrasena: {
     type: String,
@@ -28,8 +28,10 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByUsername = function(nombre, callback){
+ 
   const query = {nombre: nombre}
   User.findOne(query, callback);
+  console.log(nombre);
 }
 
 module.exports.addUser = function(newUser, callback){
@@ -40,4 +42,15 @@ module.exports.addUser = function(newUser, callback){
       newUser.save(callback);
     });
   });
+}
+module.exports.comparePassword=function(candidatePassword,hash,callback){
+  console.log("contra candidato",candidatePassword);
+  console.log("hash",hash);
+  
+  bcrypt.compare(candidatePassword,hash,(err,isMatch)=>{
+    console.log("la hasg es "+hash);
+    if(err)throw err;
+    callback (null, isMatch);
+  });
+
 }
