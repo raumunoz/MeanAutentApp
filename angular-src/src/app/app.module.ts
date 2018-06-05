@@ -3,16 +3,46 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { HomeComponent } from './components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import {RouterModule, Routes, Router}from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {ValidateService} from './services/validate.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { HttpModule } from '@angular/http';
+import {AuthService} from './services/auth.service'
+const appRoutes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'perfil', component: PerfilComponent},
 
-
+];
+  
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    LoginComponent,
+    RegistroComponent,
+    HomeComponent,
+    DashboardComponent,
+    PerfilComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    FlashMessagesModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
+    
   ],
-  providers: [],
+  providers: [ValidateService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

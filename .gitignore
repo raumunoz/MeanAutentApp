@@ -84,3 +84,5 @@ mongod
 .next.env
 .env
 
+#ignorar carpeta pulbica
+public/
