@@ -17,7 +17,7 @@ export class AuthService {
     /*esta funcion se ancarga de hacer un post dirigido para con el servidor mandara el usuario y el header el cual
     le dice al servidor que sera de tipo json*/
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:5000/users/registro',user,{headers:headers})
+    return this.http.post('/users/registro',user,{headers:headers})
     .map(res=>res.json());
   }
  
@@ -28,7 +28,7 @@ export class AuthService {
     /*esta funcion se ancarga de hacer un post dirigido para con el servidor mandara el usuario y el header el cual
     le dice al servidor que sera de tipo json*/
     headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:5000/users/autenticacion',user,{headers:headers})
+    return this.http.post('/users/autenticacion',user,{headers:headers})
     .map(res=>res.json());
   }
   getProfile() {
@@ -36,7 +36,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:5000/users/perfil', {headers: headers})
+    return this.http.get('/users/perfil', {headers: headers})
       .map((res) =>{
         console.log("respuesta json",res.json());
        return res.json()} );
