@@ -14,13 +14,14 @@ import {FormsModule} from '@angular/forms';
 import {ValidateService} from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { HttpModule } from '@angular/http';
-import {AuthService} from './services/auth.service'
+import {AuthService} from './services/auth.service';
+import {AuthGuard} from './guards/auth.guard';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'perfil', component: PerfilComponent},
+  {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
+  {path: 'perfil', component: PerfilComponent,canActivate:[AuthGuard]},
 
 ];
   
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
     
   ],
-  providers: [ValidateService,AuthService],
+  providers: [ValidateService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
