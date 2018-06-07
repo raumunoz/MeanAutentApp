@@ -10,7 +10,7 @@ const app = express();
 const users = require('./routes/users');
 
 // puerto Number
-const port = 5000;
+const port = process.env.PORT|| 5000;
 // Connect To Database
 mongoose.connect(config.database);
 
