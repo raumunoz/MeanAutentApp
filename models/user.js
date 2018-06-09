@@ -43,14 +43,17 @@ module.exports.addUser = function(newUser, callback){
     });
   });
 }
-module.exports.comparePassword=function(candidatePassword,hash,callback){
-  console.log("contra candidato",candidatePassword);
-  console.log("hash",hash);
-  
-  bcrypt.compare(candidatePassword,hash,(err,isMatch)=>{
-    console.log("la hasg es "+hash);
-    if(err)throw err;
-    callback (null, isMatch);
-  });
+module.exports.comparePassword = function (candidatePassword, hash, callback) {
+  console.log("contra candidato", candidatePassword);
+  console.log("hash", hash);
 
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    console.log("el match es  " + isMatch);
+    if (err) throw err;
+    callback(null, isMatch);
+  });
+  /*bcrypt.compare(candidatePassword, hash, function(err, res) {
+    // res == true
+    console.log("el resulado es",res)
+});*/
 }

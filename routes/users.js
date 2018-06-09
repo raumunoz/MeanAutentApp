@@ -29,10 +29,12 @@ router.post('/registro', (req, res, next) => {
 //router.post('/autenticacion', (req, res, next) => {
 // Authenticate
 router.post('/autenticacion', (req, res, next) => {
-  const nombre= req.body.nombre;
+  const body=req.body;
+  const nombre= req.body.nombreUsario;
   const contrasena= req.body.contrasena;
-  
-  User.getUserByUsername(nombre,function(err,user){
+  //console.log("usuario",usuario);
+  console.log("body para ",body);
+  User.getUserByUsername(nombre,(err,user)=>{
     
     if(err){
       throw err;
@@ -42,8 +44,8 @@ router.post('/autenticacion', (req, res, next) => {
     }
     
     User.comparePassword(contrasena,user.contrasena,(err,isMatch)=>{
-      console.log("la contraseña del usuario es "+contrasena);
-      console.log(isMatch);
+     // console.log("la contraseña del usuario es "+contrasena);
+      console.log("es match",isMatch);
       if(err)throw err;
       if(isMatch){
         const token=jwt.sign(user.toJSON(),config.secret,{

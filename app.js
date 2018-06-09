@@ -10,7 +10,7 @@ const app = express();
 const users = require('./routes/users');
 
 // puerto Number
-const port = 5000;
+const port = process.env.PORT|| 5000;
 // Connect To Database
 mongoose.connect(config.database);
 
@@ -43,6 +43,10 @@ app.use('/users', users);
 // Index Route
 app.get('/', (req, res) => {
   res.send('Dirección invalida');
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname,'public/index.html'));
 });
 
 // Start Server

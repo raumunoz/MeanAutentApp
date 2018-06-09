@@ -1,0 +1,21 @@
+<h2 class="page-header">Registro</h2>
+<form (submit)="submitRegistrar()">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Nombre</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="nombre" name="nombre">
+      </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput">Nombre de usaurio</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="nombreUsario" name="nombreUsario">
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Correo</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa correo" [(ngModel)]="correo" name="correo">
+      <small id="emailHelp" class="form-text text-muted">correo normal</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Contraseña</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="contrasena" name="contrasena">
+    </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+  </form>
