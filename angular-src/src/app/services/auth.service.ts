@@ -38,7 +38,7 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.get('/users/perfil', {headers: headers})
       .map((res) =>{
-        console.log("respuesta json",res.json());
+       // console.log("respuesta json",res.json());
        return res.json()} );
   }
 

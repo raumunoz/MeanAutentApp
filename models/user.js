@@ -31,7 +31,7 @@ module.exports.getUserByUsername = function(nombre, callback){
  
   const query = {nombre: nombre}
   User.findOne(query, callback);
-  console.log(nombre);
+ 
 }
 
 module.exports.addUser = function(newUser, callback){
@@ -44,9 +44,7 @@ module.exports.addUser = function(newUser, callback){
   });
 }
 module.exports.comparePassword = function (candidatePassword, hash, callback) {
-  console.log("contra candidato", candidatePassword);
-  console.log("hash", hash);
-
+  //contraseña de candidato  y hash
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     console.log("el match es  " + isMatch);
     if (err) throw err;

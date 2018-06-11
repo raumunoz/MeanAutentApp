@@ -5,7 +5,7 @@ export class ValidateService {
 
   constructor() { }
   validateRegistro(user){
-    console.log(user);
+   // console.log(user);
     if(user.nombre==undefined||user.nombreUsario==undefined||user.contrasena==undefined||user.correo==undefined){
       return false;
     }else{

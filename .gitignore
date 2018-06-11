@@ -84,3 +84,8 @@ mongod
 .next.env
 .env
 
+# exclude everything
+public/*
+
+# exception to the rule
+!public/.index.html 
